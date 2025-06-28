@@ -16,3 +16,5 @@ Incluye funcionalidades como:
 
 ## Propósito
 Demostrar el uso de sistemas de control de versiones con Git en un entorno de desarrollo simulado.
+
+Esta línea fue agregada desde la rama login-form.
