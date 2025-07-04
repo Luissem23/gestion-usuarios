@@ -15,7 +15,7 @@ public class GestionusuariosApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(GestionusuariosApplication.class, args);
 
-		// Abre el navegador automáticamente en /login
+		// Abre el navegador automáticamente en /login   
 		try {
 			Desktop.getDesktop().browse(new URI("http://localhost:8083/login"));
 		} catch (Exception e) {
