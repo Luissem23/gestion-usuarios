@@ -1,20 +1,27 @@
-# Gestión de Usuarios
+# Gestión de Usuarios para Obras
 
-Este es un proyecto básico en Java con Spring Boot para gestionar usuarios.  
-Incluye funcionalidades como:
+Este proyecto consiste en una aplicación web desarrollada con Java y Spring Boot, orientada a la gestión de trabajadores y usuarios en el contexto de una obra de construcción.
 
-- Registro de usuarios
-- Inicio de sesión
+## 🧩 Funcionalidades
+
+- Registro de nuevos trabajadores
+- Inicio de sesión con autenticación segura
 - Edición y eliminación de usuarios
+- Gestión de roles (ejemplo: supervisor y usuario)
+- Interfaz amigable basada en formularios
 
-## Tecnologías utilizadas
-- Java 21
-- Spring Boot
-- Thymeleaf
-- Git y GitHub
-- Visual Studio Code
+## ⚙️ Tecnologías utilizadas
 
-## Propósito
-Demostrar el uso de sistemas de control de versiones con Git en un entorno de desarrollo simulado.
+- Java 21  
+- Spring Boot  
+- Thymeleaf  
+- Bootstrap  
+- Base de datos H2 (modo archivo)  
+- Git y GitHub  
+- Visual Studio Code  
 
-Esta línea fue agregada desde la rama login-form.
+## 🚀 Cómo ejecutar el proyecto
+
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/Luissem23/gestion-usuarios.git
