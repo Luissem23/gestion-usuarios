@@ -4,54 +4,70 @@
     <meta charset="UTF-8">
     <title>Lista de Trabajadores</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body class="bg-light">
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Gestión de Usuarios</a>
-        <div class="collapse navbar-collapse">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <form th:action="@{/logout}" method="post" class="d-inline">
-                        <button type="submit" class="btn btn-outline-light">Cerrar sesión</button>
-                    </form>
-                </li>
-            </ul>
+<body>
+
+<div id="wrapper">
+    <!-- Barra lateral -->
+    <div id="sidebar-wrapper">
+        <div class="sidebar-heading">Menú</div>
+        <div class="sidebar-menu">
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/trabajadores}" class="active">Lista de Trabajadores</a>
+            <a th:href="@{/trabajadores/nuevo}">Registrar Trabajador</a>
+            <form th:action="@{/logout}" method="post" class="w-100 text-center mt-3">
+                <button type="submit" class="btn btn-outline-light w-75">Cerrar Sesión</button>
+            </form>
         </div>
     </div>
-</nav>
 
-<div class="container mt-5">
-    <h2 class="mb-4">Listado de Trabajadores</h2>
-    <a th:href="@{/trabajadores/nuevo}" class="btn btn-primary mb-3">Agregar Trabajador</a>
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>DNI</th>
-                <th>Cargo</th>
-                <th>Proyecto</th>
-                <th>Teléfono</th>
-                <th>Estado</th>
-                <th>Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr th:each="trabajador : ${trabajadores}">
-                <td th:text="${trabajador.nombreCompleto}"></td>
-                <td th:text="${trabajador.dni}"></td>
-                <td th:text="${trabajador.cargo}"></td>
-                <td th:text="${trabajador.proyectoAsignado}"></td>
-                <td th:text="${trabajador.telefono}"></td>
-                <td th:text="${trabajador.estado}"></td>
-                <td>
-                    <a th:href="@{/trabajadores/editar/{id}(id=${trabajador.id})}" class="btn btn-warning btn-sm">Editar</a>
-                    <a th:href="@{/trabajadores/eliminar/{id}(id=${trabajador.id})}" class="btn btn-danger btn-sm"
-                       onclick="return confirm('¿Estás seguro de eliminar este trabajador?');">Eliminar</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <!-- Contenido principal -->
+    <div id="page-content-wrapper">
+        <div class="card-table mx-auto col-lg-11">
+            
+            <!-- Título y botón -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="mb-0">Lista de Trabajadores</h2>
+                <a th:href="@{/trabajadores/nuevo}" class="btn btn-success">Agregar Trabajador</a>
+            </div>
+
+            <!-- Tabla -->
+            <div class="table-responsive">
+                <table class="table table-striped table-hover align-middle">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>DNI</th>
+                            <th>Cargo</th>
+                            <th>Proyecto</th>
+                            <th>Teléfono</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="trabajador : ${trabajadores}">
+                            <td th:text="${trabajador.nombreCompleto}">Nombre</td>
+                            <td th:text="${trabajador.dni}">DNI</td>
+                            <td th:text="${trabajador.cargo}">Cargo</td>
+                            <td th:text="${trabajador.proyectoAsignado}">Proyecto</td>
+                            <td th:text="${trabajador.telefono}">Teléfono</td>
+                            <td th:text="${trabajador.estado}">Estado</td>
+                            <td class="text-nowrap">
+                                <a th:href="@{'/trabajadores/editar/' + ${trabajador.id}}" class="btn btn-warning btn-sm me-1">Editar</a>
+                                <a th:href="@{'/trabajadores/eliminar/' + ${trabajador.id}}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro?')">Eliminar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
 </div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -4,76 +4,67 @@
     <meta charset="UTF-8">
     <title>Formulario Trabajador</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
-<body class="bg-light">
+<body class="formulario-page">
 
-<!-- Menú de navegación con botón de cerrar sesión -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Sistema de Usuarios</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/trabajadores}">Lista de Trabajadores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" th:href="@{/trabajadores/nuevo}">Registrar Trabajador</a>
-        </li>
-      </ul>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <form th:action="@{/logout}" method="post">
-            <button type="submit" class="btn btn-outline-danger">Cerrar sesión</button>
-          </form>
-        </li>
-      </ul>
+<div id="wrapper">
+    <!-- Barra lateral -->
+    <div id="sidebar-wrapper">
+        <div class="sidebar-heading">Menú</div>
+        <div class="sidebar-menu">
+            <a th:href="@{/}">Inicio</a>
+            <a th:href="@{/trabajadores}">Lista de Trabajadores</a>
+            <a th:href="@{/trabajadores/nuevo}" class="active">Registrar Trabajador</a>
+            <form th:action="@{/logout}" method="post" class="w-100 text-center mt-3">
+                <button type="submit" class="btn btn-outline-light w-75">Cerrar Sesión</button>
+            </form>
+        </div>
     </div>
-  </div>
-</nav>
 
-<!-- Formulario de trabajador -->
-<div class="container mt-4">
-    <h2 class="mb-4">Registrar / Editar Trabajador</h2>
-    <form th:action="@{/trabajadores/guardar}" th:object="${trabajador}" method="post" class="row g-3">
-        <input type="hidden" th:field="*{id}" />
-        <div class="col-md-6">
-            <label for="nombreCompleto" class="form-label">Nombre completo</label>
-            <input type="text" class="form-control" th:field="*{nombreCompleto}" required />
+    <!-- Contenido principal -->
+    <div id="page-content-wrapper">
+        <div class="card-form mx-auto col-lg-10">
+            <h2 class="mb-4 text-center">Registrar / Editar Trabajador</h2>
+            <form th:action="@{/trabajadores/guardar}" th:object="${trabajador}" method="post" class="row g-3">
+                <input type="hidden" th:field="*{id}" />
+                <div class="col-md-6">
+                    <label class="form-label">Nombre completo</label>
+                    <input type="text" class="form-control" th:field="*{nombreCompleto}" required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">DNI</label>
+                    <input type="text" class="form-control" th:field="*{dni}" required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Cargo</label>
+                    <input type="text" class="form-control" th:field="*{cargo}" required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Proyecto Asignado</label>
+                    <input type="text" class="form-control" th:field="*{proyectoAsignado}" required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Teléfono</label>
+                    <input type="text" class="form-control" th:field="*{telefono}" required />
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Estado</label>
+                    <select class="form-select" th:field="*{estado}" required>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                </div>
+                <div class="col-12 text-center mt-4">
+                    <button type="submit" class="btn btn-success px-4 me-2">Guardar</button>
+                    <a th:href="@{/trabajadores}" class="btn btn-secondary px-4">Volver</a>
+                </div>
+            </form>
         </div>
-        <div class="col-md-6">
-            <label for="dni" class="form-label">DNI</label>
-            <input type="text" class="form-control" th:field="*{dni}" required />
-        </div>
-        <div class="col-md-6">
-            <label for="cargo" class="form-label">Cargo</label>
-            <input type="text" class="form-control" th:field="*{cargo}" required />
-        </div>
-        <div class="col-md-6">
-            <label for="proyectoAsignado" class="form-label">Proyecto Asignado</label>
-            <input type="text" class="form-control" th:field="*{proyectoAsignado}" required />
-        </div>
-        <div class="col-md-6">
-            <label for="telefono" class="form-label">Teléfono</label>
-            <input type="text" class="form-control" th:field="*{telefono}" required />
-        </div>
-        <div class="col-md-6">
-            <label for="estado" class="form-label">Estado</label>
-            <select class="form-select" th:field="*{estado}">
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
-            </select>
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn btn-success">Guardar</button>
-            <a th:href="@{/trabajadores}" class="btn btn-secondary">Volver</a>
-        </div>
-    </form>
+    </div>
 </div>
 
-<!-- Scripts de Bootstrap (para menú responsive) -->
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
