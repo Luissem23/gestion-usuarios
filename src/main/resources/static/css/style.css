@@ -17,29 +17,83 @@ h2 {
     font-weight: 500;
 }
 
-/* === Login === */
+/* === Login Base (Antiguo) === */
 body.login-page {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to right, #2b292e, #212327);
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
 }
 
-.login-card {
-    background-color: #fff;
-    padding: 2.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+/* === Login Mejorado === */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    padding: 40px;
+    max-width: 900px;
     width: 100%;
-    max-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    backdrop-filter: blur(10px);
+    background: linear-gradient(to right, #1f1c2c, #928dab);
 }
 
-.login-card h2 {
-    font-weight: 700;
-    margin-bottom: 1.5rem;
+.welcome-section {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5rem;
     text-align: center;
-    color: #333;
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.welcome-section p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: #e0e0e0;
+}
+
+.form-section {
+    padding: 1.5rem;
+}
+
+.form-section label {
+    color: white;
+    font-weight: 500;
+}
+
+.form-section input {
+    background-color: #f8f9fa;
+}
+
+.form-section .btn-primary {
+    background-color: #6c63ff;
+    border: none;
+}
+
+.form-section .btn-primary:hover {
+    background-color: #574fe4;
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        flex-direction: column;
+    }
+
+    .welcome-section {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 2rem;
+    }
 }
 
 /* === Botones === */
@@ -228,3 +282,4 @@ body.login-page {
         align-items: center;
     }
 }
+ 
